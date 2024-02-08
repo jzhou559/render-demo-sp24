@@ -1,0 +1,226 @@
+,species,year,count
+0,Brisbane Box,1977,1
+1,Brisbane Box,1980,1
+2,Brisbane Box,1982,4
+3,Brisbane Box,1983,2
+4,Brisbane Box,1984,1
+5,Brisbane Box,1985,3
+6,Brisbane Box,1986,5
+7,Brisbane Box,1987,1
+8,Brisbane Box,1988,1
+9,Brisbane Box,1989,6
+10,Brisbane Box,1990,13
+11,Brisbane Box,1991,6
+12,Brisbane Box,1992,20
+13,Brisbane Box,1993,6
+14,Brisbane Box,1994,13
+15,Brisbane Box,1995,82
+16,Brisbane Box,1996,15
+17,Brisbane Box,1997,32
+18,Brisbane Box,1998,29
+19,Brisbane Box,1999,11
+20,Brisbane Box,2000,27
+21,Brisbane Box,2001,11
+22,Brisbane Box,2002,9
+23,Brisbane Box,2003,19
+24,Brisbane Box,2004,8
+25,Brisbane Box,2005,46
+26,Brisbane Box,2006,55
+27,Brisbane Box,2007,13
+28,Brisbane Box,2008,25
+29,Brisbane Box,2009,14
+30,Brisbane Box,2010,9
+31,Brisbane Box,2011,18
+32,Brisbane Box,2012,12
+33,Brisbane Box,2013,13
+34,Brisbane Box,2014,22
+35,Brisbane Box,2015,45
+36,Brisbane Box,2016,38
+37,Brisbane Box,2017,45
+38,Brisbane Box,2018,18
+39,Brisbane Box,2019,15
+40,Brisbane Box,2020,12
+41,Brisbane Box,2021,16
+42,New Zealand Xmas Tree,1974,3
+43,New Zealand Xmas Tree,1977,1
+44,New Zealand Xmas Tree,1978,1
+45,New Zealand Xmas Tree,1979,2
+46,New Zealand Xmas Tree,1980,7
+47,New Zealand Xmas Tree,1981,5
+48,New Zealand Xmas Tree,1982,19
+49,New Zealand Xmas Tree,1983,2
+50,New Zealand Xmas Tree,1984,9
+51,New Zealand Xmas Tree,1985,7
+52,New Zealand Xmas Tree,1986,2
+53,New Zealand Xmas Tree,1987,6
+54,New Zealand Xmas Tree,1988,5
+55,New Zealand Xmas Tree,1989,4
+56,New Zealand Xmas Tree,1990,10
+57,New Zealand Xmas Tree,1991,5
+58,New Zealand Xmas Tree,1992,18
+59,New Zealand Xmas Tree,1993,15
+60,New Zealand Xmas Tree,1994,25
+61,New Zealand Xmas Tree,1995,10
+62,New Zealand Xmas Tree,1996,10
+63,New Zealand Xmas Tree,1997,8
+64,New Zealand Xmas Tree,1998,15
+65,New Zealand Xmas Tree,1999,6
+66,New Zealand Xmas Tree,2000,6
+67,New Zealand Xmas Tree,2001,2
+68,New Zealand Xmas Tree,2002,16
+69,New Zealand Xmas Tree,2003,7
+70,New Zealand Xmas Tree,2004,3
+71,New Zealand Xmas Tree,2005,5
+72,New Zealand Xmas Tree,2006,3
+73,New Zealand Xmas Tree,2007,6
+74,New Zealand Xmas Tree,2008,38
+75,New Zealand Xmas Tree,2009,11
+76,New Zealand Xmas Tree,2010,2
+77,New Zealand Xmas Tree,2011,6
+78,New Zealand Xmas Tree,2012,3
+79,New Zealand Xmas Tree,2013,1
+80,New Zealand Xmas Tree,2014,3
+81,New Zealand Xmas Tree,2015,13
+82,New Zealand Xmas Tree,2016,7
+83,New Zealand Xmas Tree,2017,5
+84,New Zealand Xmas Tree,2018,7
+85,New Zealand Xmas Tree,2019,2
+86,New Zealand Xmas Tree,2020,8
+87,New Zealand Xmas Tree,2021,9
+88,New Zealand Xmas Tree,2056,1
+89,New Zealand Xmas Tree,2072,9
+90,New Zealand Xmas Tree,2073,8
+91,Swamp Myrtle,1976,1
+92,Swamp Myrtle,1977,1
+93,Swamp Myrtle,1981,1
+94,Swamp Myrtle,1982,2
+95,Swamp Myrtle,1983,1
+96,Swamp Myrtle,1985,15
+97,Swamp Myrtle,1986,2
+98,Swamp Myrtle,1987,2
+99,Swamp Myrtle,1988,1
+100,Swamp Myrtle,1989,1
+101,Swamp Myrtle,1990,6
+102,Swamp Myrtle,1991,4
+103,Swamp Myrtle,1992,16
+104,Swamp Myrtle,1993,6
+105,Swamp Myrtle,1994,5
+106,Swamp Myrtle,1995,52
+107,Swamp Myrtle,1996,13
+108,Swamp Myrtle,1997,43
+109,Swamp Myrtle,1998,29
+110,Swamp Myrtle,1999,11
+111,Swamp Myrtle,2000,14
+112,Swamp Myrtle,2001,10
+113,Swamp Myrtle,2002,11
+114,Swamp Myrtle,2003,19
+115,Swamp Myrtle,2004,8
+116,Swamp Myrtle,2005,28
+117,Swamp Myrtle,2006,55
+118,Swamp Myrtle,2007,43
+119,Swamp Myrtle,2008,65
+120,Swamp Myrtle,2009,22
+121,Swamp Myrtle,2010,9
+122,Swamp Myrtle,2011,25
+123,Swamp Myrtle,2012,12
+124,Swamp Myrtle,2013,13
+125,Swamp Myrtle,2014,14
+126,Swamp Myrtle,2015,21
+127,Swamp Myrtle,2016,28
+128,Swamp Myrtle,2017,16
+129,Swamp Myrtle,2018,27
+130,Swamp Myrtle,2019,20
+131,Swamp Myrtle,2020,20
+132,Swamp Myrtle,2021,18
+133,Swamp Myrtle,2069,1
+134,Swamp Myrtle,2072,2
+135,Sycamore: London Plane,1974,2
+136,Sycamore: London Plane,1977,3
+137,Sycamore: London Plane,1979,6
+138,Sycamore: London Plane,1980,1
+139,Sycamore: London Plane,1982,5
+140,Sycamore: London Plane,1983,2
+141,Sycamore: London Plane,1988,1
+142,Sycamore: London Plane,1989,3
+143,Sycamore: London Plane,1990,9
+144,Sycamore: London Plane,1991,3
+145,Sycamore: London Plane,1992,6
+146,Sycamore: London Plane,1993,17
+147,Sycamore: London Plane,1994,15
+148,Sycamore: London Plane,1995,37
+149,Sycamore: London Plane,1996,4
+150,Sycamore: London Plane,1997,2
+151,Sycamore: London Plane,1998,14
+152,Sycamore: London Plane,1999,5
+153,Sycamore: London Plane,2000,25
+154,Sycamore: London Plane,2001,26
+155,Sycamore: London Plane,2002,18
+156,Sycamore: London Plane,2003,9
+157,Sycamore: London Plane,2004,8
+158,Sycamore: London Plane,2005,15
+159,Sycamore: London Plane,2006,10
+160,Sycamore: London Plane,2007,3
+161,Sycamore: London Plane,2008,10
+162,Sycamore: London Plane,2009,4
+163,Sycamore: London Plane,2010,9
+164,Sycamore: London Plane,2011,10
+165,Sycamore: London Plane,2012,11
+166,Sycamore: London Plane,2013,3
+167,Sycamore: London Plane,2014,15
+168,Sycamore: London Plane,2015,16
+169,Sycamore: London Plane,2016,12
+170,Sycamore: London Plane,2017,4
+171,Sycamore: London Plane,2018,4
+172,Sycamore: London Plane,2019,2
+173,Sycamore: London Plane,2020,10
+174,Sycamore: London Plane,2021,10
+175,Sycamore: London Plane,2056,2
+176,Sycamore: London Plane,2072,4
+177,Victorian Box,1974,2
+178,Victorian Box,1976,3
+179,Victorian Box,1979,1
+180,Victorian Box,1981,2
+181,Victorian Box,1982,2
+182,Victorian Box,1983,3
+183,Victorian Box,1984,4
+184,Victorian Box,1985,10
+185,Victorian Box,1986,12
+186,Victorian Box,1987,6
+187,Victorian Box,1988,1
+188,Victorian Box,1989,2
+189,Victorian Box,1990,32
+190,Victorian Box,1991,9
+191,Victorian Box,1992,25
+192,Victorian Box,1993,13
+193,Victorian Box,1994,2
+194,Victorian Box,1995,11
+195,Victorian Box,1996,4
+196,Victorian Box,1997,11
+197,Victorian Box,1998,9
+198,Victorian Box,1999,9
+199,Victorian Box,2000,15
+200,Victorian Box,2001,8
+201,Victorian Box,2002,5
+202,Victorian Box,2003,6
+203,Victorian Box,2004,9
+204,Victorian Box,2005,8
+205,Victorian Box,2006,15
+206,Victorian Box,2007,7
+207,Victorian Box,2008,20
+208,Victorian Box,2009,11
+209,Victorian Box,2010,4
+210,Victorian Box,2011,12
+211,Victorian Box,2012,7
+212,Victorian Box,2013,11
+213,Victorian Box,2014,7
+214,Victorian Box,2015,10
+215,Victorian Box,2016,14
+216,Victorian Box,2017,18
+217,Victorian Box,2018,9
+218,Victorian Box,2019,5
+219,Victorian Box,2020,5
+220,Victorian Box,2056,9
+221,Victorian Box,2069,1
+222,Victorian Box,2070,1
+223,Victorian Box,2072,9
+224,Victorian Box,2073,2

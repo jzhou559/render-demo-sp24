@@ -1,0 +1,373 @@
+<html>
+<head>
+
+    <title>4310 HW1 jz559</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+
+<style>
+/* .zip{
+  fill:lightgrey;
+}
+.outline{
+  fill:none;
+  stroke:black;
+  stroke-width:1px
+} */
+
+.gridlines line {
+  stroke: #D3D3D3;
+}
+</style>
+</head>
+<body>
+  <h4>Data Processing</h4>
+  <p>Before start plotting, I pre-processed the data with python. To observe
+    the tree's growing patterns over the year, I extracted the "year" attribute
+    from the "PlantDate" column. Meanwhile, I hope to learn more about the types
+    of trees being planted across San Francisco. Rather than working with the species'
+    full scientific name, I extracted the commonly known name from the "qSpecies" column
+    to create a new column called "CommonName". As I hope to observe the tree Planting
+    trend in San Francisco data over the year, I aggregated the data to calculate the Number
+    of trees being planted per year. Meanwhile, I also identified the five most common
+    tree species in San Francisco for further analaysis. </p>
+
+    <p>Throughout the visualizaiton, I hope to observe the number of trees planted per year,
+      to highlight the city's planting efforts over time. Meanwhile, I wanted to take a closer
+    look at hte five most common tree species, observing their planting pattern over time and distribution over the city. </p>
+  <h4>Graph 1: Tree Planted Throughout the Year</h4>
+  <svg id = "linechart" width = "800" height = "400" /></svg>
+<script>
+
+const svg = d3.select("#linechart");
+const width = svg.attr("width");
+const height = svg.attr("height");
+const margin = {top:10, right:20, bottom: 50, left:50};
+const chartWidth = width - margin.left - margin.right;
+const chartHeight = height - margin.top - margin.bottom;
+
+let annotations = svg.append("g").attr("id", "annotations");
+let chartArea = svg.append("g").attr("id", "points").attr("transform",`translate(${margin.left},${margin.top})`);
+
+d3.csv("year_sum.csv").then((data) => {
+    console.log(data);
+
+    // y axis
+    const yScale = d3.scaleLinear().domain([0, 800]).range([chartHeight, 0]);
+    let leftAxis = d3.axisLeft(yScale);
+    let leftGridlines = d3.axisLeft(yScale)
+                          .tickSize(-chartWidth-10)
+                          .tickFormat("")
+    annotations.append("g")
+      .attr("class", "y axis")
+      .attr("transform",`translate(${margin.left-10},${margin.top})`)
+      .call(leftAxis);
+    annotations.append("g")
+      .attr("class", "y gridlines")
+      // .style("stroke", "#D3D3D3")
+      .attr("transform",`translate(${margin.left-10},${margin.top})`)
+      .call(leftGridlines);
+    svg.append("text")
+       .attr("transform", "rotate(-90)")
+       .attr("x", -chartHeight/2)
+       .attr("y", -margin.top + 20)
+       .style("text-anchor", "middle")
+       .style("font-size", "15px")
+       .text("Number of Tree");
+
+    // x axis
+
+   const dateScale = d3.scaleLinear().domain([1955, 2025]).range([0,chartWidth]);
+   let bottomAxis = d3.axisBottom(dateScale)
+   let bottomGridlines = d3.axisBottom(dateScale)
+                           .tickSize(-chartHeight-10)
+                           .tickFormat("")
+   annotations.append("g")
+     .attr("class", "x axis")
+     .attr("transform",`translate(${margin.left},${chartHeight+margin.top+10})`)
+     .call(bottomAxis);
+   annotations.append("g")
+     .attr("class", "x gridlines")
+     // .style("stroke", "lightgrey")
+     .attr("transform",`translate(${margin.left},${chartHeight+margin.top+10})`)
+     .call(bottomGridlines);
+   svg.append("text")
+      .attr("transform", "translate(" + (chartWidth/2 + 40) + "," + (chartHeight + margin.top + 40) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", "15px")
+      .text("Year Planted")
+
+   // color scheme
+   // color = d3.scaleOrdinal(d3.schemeCategory10);
+
+   var lineGen = d3.line()
+        .x(d => dateScale(d['year']))
+        .y(d => yScale(d.count));
+
+
+
+  let gTags = chartArea.selectAll("g.lines").data(data)
+          .join("g")
+          .attr("class", "lines")
+          .attr("stroke", d => "blue");
+
+  gTags.append("path")
+           .datum(d => data)
+           .attr("fill", "none")
+           .attr("stroke-width", "2px")
+           .attr("d", lineGen);
+
+  gTags.selectAll("circle")
+       .data (d => data)
+       .join('circle')
+       .attr("cx", d => dateScale(d.year))
+       .attr("cy",d => yScale(d.count) )
+       .attr("r", "2px")
+
+});
+
+
+
+</script>
+<p>The line chart showcases the total number of trees processed from 1955 to 2022.
+  The count is indicated by small circles, connected by lines. The line chart shows that
+  the number of trees being planted peaked in 2008. Compare two the 20th century,
+  there were more trees being planted in the past two decades. This might be due to the continuous
+  effort by the city and community groups to enhance the urban environment. For intance, San Francisco
+  Mayor has announced to plant 25,000 trees in San Francisco in his 2004 pledges (sfenvironment.org). In the following years,
+  initiatives such as "San Francisco Urban Forest Plan" also contributed to the tree planting activity. </p>
+
+<h4>Graph 2: Top Five Species's Planting Pattern</h4>
+<svg id = "linechart2" width = "800" height = "400" /></svg>
+
+<script>
+const svg2 = d3.select("#linechart2");
+const width2 = svg2.attr("width");
+const height2 = svg2.attr("height");
+const margin2 = {top:10, right:20, bottom: 50, left:50};
+const chartWidth2 = width2 - margin2.left - margin2.right;
+const chartHeight2 = height2 - margin2.top - margin2.bottom;
+
+let annotations2 = svg2.append("g").attr("id", "annotations");
+let chartArea2 = svg2.append("g").attr("id", "points").attr("transform",`translate(${margin2.left},${margin2.top})`);
+
+d3.csv("popular_year.csv").then((data) => {
+  console.log(data);
+
+
+  // y axis
+  const yScale2 = d3.scaleLinear().domain([0, 90]).range([chartHeight2, 0]);
+  let leftAxis2 = d3.axisLeft(yScale2);
+  let leftGridlines2 = d3.axisLeft(yScale2)
+                        .tickSize(-chartWidth2-10)
+                        .tickFormat("")
+  annotations2.append("g")
+    .attr("class", "y axis")
+    .attr("transform",`translate(${margin2.left-10},${margin2.top})`)
+    .call(leftAxis2);
+  annotations2.append("g")
+    .attr("class", "y gridlines")
+    // .style("fill", "light grey")
+    .attr("transform",`translate(${margin2.left-10},${margin2.top})`)
+    .call(leftGridlines2);
+  svg2.append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("x", -chartHeight2/2)
+     .attr("y", -margin2.top + 20)
+     .style("text-anchor", "middle")
+     .style("font-size", "15px")
+     .text("Number of Tree");
+
+  // x axis
+
+ const dateScale2 = d3.scaleLinear().domain([1950, 2025]).range([0,chartWidth2]);
+ let bottomAxis = d3.axisBottom(dateScale2)
+ let bottomGridlines = d3.axisBottom(dateScale2)
+                         .tickSize(-chartHeight2-10)
+                         .tickFormat("")
+ annotations2.append("g")
+   .attr("class", "x axis")
+   .attr("transform",`translate(${margin2.left},${chartHeight2+margin2.top+10})`)
+   .call(bottomAxis);
+ annotations2.append("g")
+   .attr("class", "x gridlines")
+   // .style("fill", "light grey")
+   .attr("transform",`translate(${margin2.left},${chartHeight2+margin2.top+10})`)
+   .call(bottomGridlines);
+ svg2.append("text")
+    .attr("transform", "translate(" + (chartWidth2/2 + 40) + "," + (chartHeight2 + margin2.top + 40) + ")")
+    .style("text-anchor", "middle")
+    .style("font-size", "15px")
+    .text("Year Planted")
+
+ color = d3.scaleOrdinal(d3.schemeCategory10);
+
+ var lineGen = d3.line()
+      .x(d => dateScale2(d.year))
+      .y(d => yScale2(d.count));
+
+let gTags2 = chartArea2.selectAll("g.lines").data(data)
+        .join("g")
+        .attr("class", "lines")
+        .attr("stroke", d => color(d.species));
+
+const sumBySpecies = d3.group(data, d => d.species);
+
+chartArea2.selectAll(".line")
+    .data(sumBySpecies)
+    .join("path")
+    .attr("class", "line")
+    .attr("fill", "none")
+    .attr("stroke", d => color(d[0]))
+    .attr("stroke-width", "2px")
+    .attr("d", d => lineGen(d[1]));
+
+    var trees = ["Sycamore: London Plane",
+    "New Zealand Xmas Tree",
+    "Brisbane Box",
+    "Victorian Box",
+    "Swamp Myrtle"];
+
+
+    // legend
+    chartArea2.selectAll("dots")
+      .data(trees)
+      .join("circle")
+        .attr("cx", 20)
+        .attr("cy", function(d,i){ return 20 + i*15})
+        .attr("r", 2)
+        .style("fill", d => color(d))
+        .style("stroke", "none");
+
+
+    chartArea2.selectAll("labels")
+      .data(trees)
+      .join("text")
+        .attr("x", 40)
+        .attr("y", function(d,i){ return 20 + i*15})
+        .style("fill", d => color(d))
+        .style("stroke", "none")
+        .style("font-size", "15px")
+        .text(d => d )
+        .style("alignment-baseline", "middle");
+
+});
+
+
+</script>
+
+<p>For the second graph, I tooked a closer at the five most common tree species
+  in San Francisco, which are London Plane, New Zealand Xmas Tree, Brisbane Box, Victorian Box,
+  and Swamp Myrtle. Upon some research, I found that those are trees that are high adaptable to the
+  San Francisco weather, especially tolerant to the drought condition in San Francisco. Among those,
+  Brisbane Box and Swamp Myrtle were the most common ones. Their planting pattern was similar to other trees,
+  peaked in 1995, and 2004-2006. London Plane seemed to be popular in the late 1900s, but the planting effort decreased over time. <p>
+
+<h4>Graph 3: Top 5 Species' distribution across San Francisco</h4>
+<svg id="choropleth" height="600" width="1000" style="margin-top:30px" ></svg>
+
+<script>
+
+const svg3 = d3.select("#choropleth");
+const width3 = svg3.attr("width");
+const height3 = svg3.attr("height");
+const margin3 = { top: 20, right: 20, bottom: 20, left:20};
+const mapWidth = width3 - margin3.left - margin3.right;
+const mapHeight = height3 - margin3.top - margin3.bottom-50;
+const map = svg3.append("g")
+                .attr("transform","translate("+margin3.left+","+margin3.top+")");
+  const requestData = async function() {
+    const sf = await d3.json("SF-Neighborhoods.geo.json");
+    console.log(sf);
+
+    console.log(sf.objects.SFNeighborhoods)
+
+    var sf_neighborhoods = topojson.feature(sf, sf.objects.SFNeighborhoods);
+    var nMesh = topojson.mesh(sf, sf.objects.SFNeighborhoods);
+    var projection = d3.geoMercator().fitSize([mapWidth, mapHeight], sf_neighborhoods);
+    var path = d3.geoPath().projection(projection);
+
+    let nPaths = map.selectAll("path.n").data(sf_neighborhoods.features)
+                     .join("path")
+                     .attr("class", "n")
+                     .attr("d", path)
+                     .style("fill","white");
+
+    map.append("path").datum(nMesh)
+       .attr("class","outline")
+       .attr("d", path)
+       .style("fill","white")
+       .style("stroke","darkblue");
+
+
+
+    const trees = await d3.csv("top_five.csv", d3.autoType);
+
+
+
+    const treesGroup = map.append("g")
+                      .attr("class", "trees-group");
+
+    treesGroup.selectAll("circle.tree")
+      .data(trees)
+      .join("circle")
+        .attr("class", "tree")
+        .attr("cx", d => projection([d["Longitude"], d["Latitude"]])[0])
+        .attr("cy", d => projection([d["Longitude"], d["Latitude"]])[1])
+        .attr("r", 3)
+        .style("opacity", 0.8)
+        .style("fill", d => color(d["CommonName"]));
+
+        var five_trees = ["Sycamore: London Plane",
+        "New Zealand Xmas Tree",
+        "Brisbane Box",
+        "Victorian Box",
+        "Swamp Myrtle"];
+
+        // legend
+        map.selectAll("dots")
+          .data(five_trees)
+          .join("circle")
+            .attr("cx", 20)
+            .attr("cy", function(d,i){ return 20 + i*15})
+            .attr("r", 2)
+            .style("fill", d => color(d))
+            .style("stroke", "none");
+
+
+        map.selectAll("labels")
+          .data(five_trees)
+          .join("text")
+            .attr("x", 40)
+            .attr("y", function(d,i){ return 20 + i*15})
+            .style("fill", d => color(d))
+            .style("stroke", "none")
+            .style("font-size", "15px")
+            .text(d => d )
+            .style("alignment-baseline", "middle");
+
+
+
+
+};
+
+      requestData();
+
+</script>
+<p>For the final visualization, I examined the top five species' distribuiton across the
+San Francisco region. I used geopath to map the trees onto the San Francisco map, and colorcode the
+species using the same color schemes as the previous visualization. The two most common species, Brisbane Box and Swamp Myrtle, are
+distributed across the San Francisco. London Plane was mostly concentrated in the northeastern region. Knowing that
+the northeastern parts of San Francisco are among the oldest areas, London Plane might be
+part of the historical urban development. New Zealand Xmas Tree, on the other hand, are mostly located along the coast,
+which might be due to its salt tolerance and wind resistance, making it suitable to coastal environments.
+ </p>
+
+<h4>Acknowledgement of Bias</h4>
+<p>The pre-processing of data introduces biases for the data visualization. One key attribute
+  I include in the data visualization is "year" extracted from the "PlantDate" column. However, only about 1/4 of the data
+records "PlantDate". The is a risk of selection bias. For example, if the recorded dates might be disproportionately from certain years
+or areas. As a result, the visualization might overemphasize trends or patterns from those periods, skewing the interpretation.  </p>
+</body>
+</html>
